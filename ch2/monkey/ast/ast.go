@@ -1,8 +1,8 @@
 // ast/ast.go
 
-import "monkey/token"
-
 package ast
+
+import "monkey/token"
 
 type Node interface {
 	TokenLiteral() string
