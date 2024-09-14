@@ -36,6 +36,7 @@ const (
 	// Deliminiters
 	COMMA	= ","
 	SEMICOLON = ";"
+	COLON = ":"
 
 	LPAREN	= "("
 	RPAREN	= ")"
