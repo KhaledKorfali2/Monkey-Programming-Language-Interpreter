@@ -23,3 +23,6 @@ go.work.sum
 
 
 go.mod:Zone.Identifier
+
+*:Zone.Identifier*
+
