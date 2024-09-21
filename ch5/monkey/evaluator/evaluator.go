@@ -65,10 +65,13 @@ func Eval(node ast.Node, env *object.Environment) object.Object {
 	// Expressions
 	case *ast.IfExpression:
 		return evalIfExpression(node, env)
+
 	case *ast.IntegerLiteral:
 		return &object.Integer{Value: node.Value}
+
 	case *ast.StringLiteral:
 		return &object.String{Value: node.Value}
+
 	case *ast.ArrayLiteral:
 		elements := evalExpressions(node.Elements, env)
 		if len(elements) == 1 && isError(elements[0]) {
@@ -76,13 +79,16 @@ func Eval(node ast.Node, env *object.Environment) object.Object {
 		}
 
 		return &object.Array{Elements: elements}
+
 	case *ast.HashLiteral:
 		return evalHashLiteral(node, env)
+
 	case *ast.Boolean:
 		return nativeBoolToBooleanObject(node.Value)
+
 	case *ast.CallExpression:
 		if node.Function.TokenLiteral() == "quote" {
-			return quote(node.Arguments[0])	
+			return quote(node.Arguments[0], env)	
 		}
 
 		function := Eval(node.Function, env)
